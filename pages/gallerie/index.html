@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallerie - ONG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+
+</head>
+<body class="font-sans antialiased bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+
+                                                    <!-- Custom Style -->
+<style>
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow:hidden;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .lightbox-image {
+      display: block;
+      margin: auto;
+      max-width: 100%;
+     max-height: 100%;
+    }
+    .close {
+      color: #fff;
+      font-size: 3em;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      cursor: pointer;
+    }
+    .gallery {
+      width: 90vw;
+      max-width: 1200px;
+      margin: 0 auto;
+      grid-template-rows: 1fr;
+      grid-column-gap: 30px;
+      grid-row-gap: 30px;
+      
+    }
+    .gallery img {
+      max-width: 100%;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      max-width: 100%;
+      cursor: pointer;
+    }
+    </style>
+
+  <!-- Header avec menu mobile -->
+  <header class="bg-[#21064d] text-white p-4 sticky z-50">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">Educ-universel</h1>
+      <div class="md:hidden" x-data="{ open: false }">
+        <button type="button" title="menu" @click="open = !open">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <div x-show="open" class="absolute left-0 right-0 bg-[#21064d] mt-2 space-y-2 text-center py-4 z-10">
+          <a href="../../index.html" class="block text-white hover:text-[#4fc5a3]">Accueil</a>
+          <a href="../about/index.html" class="block text-white hover:text-[#4fc5a3]">À propos</a>
+          <a href="../about/#missions" class="block text-white hover:text-[#4fc5a3]">Mission</a>
+          
+          <a href="../gallerie/index.html" class="block text-white hover:text-[#4fc5a3]">Gallerie</a>
+          <a href="../formation/index.html" class="block text-white hover:text-[#4fc5a3]">Activités</a>
+          <a href="../contact/index.html" class="block text-white hover:text-[#4fc5a3]">Contact</a>
+        </div>
+      </div>
+      <nav class="space-x-4 hidden md:block">
+        <a href="../../index.html" class="hover:text-[#4fc5a3]">Accueil</a>
+        <a href="../about/index.html" class="hover:text-[#4fc5a3]">À propos</a>
+        <a href="../about/#missions" class="hover:text-[#4fc5a3]">Mission</a>
+        
+        <a href="../gallerie/index.html" class="hover:text-[#4fc5a3]">Gallerie</a>
+        <a href="../formation/index.html" class="hover:text-[#4fc5a3]">Activités</a>
+        <a href="../contact/index.html" class="hover:text-[#4fc5a3]">Contact</a>
+      </nav>
+    </div>
+
+  </header>
+
+
+     <section class="py-24 ">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+            <div class="grid gap-2.5 lg:pb-16 pb-10">
+              <h2 class="w-full text-center text-gray-900 text-4xl font-bold font-manrope leading-normal">Our Gallery</h2>
+              <div class="w-full text-center text-gray-600 text-lg font-normal leading-8">Step into a realm where art comes to life.</div>
+            </div>
+                <div class="gallery">
+                  <div class="flex flex-col mb-10">
+                    <div class="grid md:grid-cols-12 gap-8 lg:mb-11 mb-7">
+                      <div class="md:col-span-4 md:h-[404px] h-[277px] w-full rounded-3xl">
+                          <img src="../../img/atr/7.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
+                        </div>
+                        <div class="md:col-span-8 md:h-[404px] h-[277px] w-full rounded-3xl">
+                          <img src="../../img/atr/6.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-8 md:col-span-6 w-full h-full">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 grid-cols-1 gap-8">
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/atr/3.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/atr/4.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/atr/b.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery">
+                <div class="flex flex-col mb-10">
+                    <div class="grid md:grid-cols-12 gap-8 lg:mb-11 mb-7">
+                      <div class="md:col-span-4 md:h-[404px] h-[277px] w-full rounded-3xl">
+                          <img src="../../img/atr/5.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
+                        </div>
+                        <div class="md:col-span-8 md:h-[404px] h-[277px] w-full rounded-3xl">
+                          <img src="../../img/atr/10.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-8 md:col-span-6 w-full h-full">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 grid-cols-1 gap-8">
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/atr/12.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/atr/11.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/atr/9.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                  <div class="flex flex-col mb-10">
+                    <div class="grid md:grid-cols-12 gap-8 lg:mb-11 mb-7">
+                      <div class="md:col-span-4 md:h-[404px] h-[277px] w-full rounded-3xl">
+                          <img src="../../img/agr/3.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
+                        </div>
+                        <div class="md:col-span-8 md:h-[404px] h-[277px] w-full rounded-3xl">
+                          <img src="../../img/agr/8.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-8 md:col-span-6 w-full h-full">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 grid-cols-1 gap-8">
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/ctr/4.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/ctr/2.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/ctr/a.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-col mb-10">
+                    <div class="grid md:grid-cols-12 gap-8 lg:mb-11 mb-7">
+                      <div class="md:col-span-4 md:h-[404px] h-[277px] w-full rounded-3xl">
+                          <img src="../../img/ctr/3.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
+                        </div>
+                        <div class="md:col-span-8 md:h-[404px] h-[277px] w-full rounded-3xl">
+                          <img src="../../img/ctr/f.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-8 md:col-span-6 w-full h-full">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 grid-cols-1 gap-8">
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/ctr/e.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/ctr/a.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                      <div class="h-[277px] w-full rounded-3xl">
+                        <img src="../../img/ctr/h.jpg" alt="Gallery image" class="gallery-image object-cover rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto w-full h-full">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="lightbox" id="lightbox">
+                <span class="close" id="close">&times;</span>
+                <img src="" alt="" class="lightbox-image" id="lightbox-image">
+              </div>
+            </div>
+        </section>
+
+
+
+        
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-[#21064d] text-white">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Rejoignez-nous dans notre mission</h2>
+          <p class="text-lg mb-8">Ensemble, nous pouvons faire la différence. Participez à nos activités ou soutenez-nous par un don.</p>
+          <a href="../contact/index.html" class="bg-[#4fc5a3] hover:bg-[#3ea88c] text-white font-semibold py-3 px-6 rounded-lg transition duration-300">Contactez-nous</a>
+      </div>
+  </section>
+
+  <section class="py-20 bg-[#4fc5a3]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="bg-[#21064d] rounded-2xl p-8 xl:p-11 shadow-xl">
+          <h2 class="font-manrope text-4xl text-white text-center font-bold mb-4">
+            Agissons ensemble pour un avenir meilleur
+          </h2>
+          <p class="text-[#add670] text-center mb-10 max-w-2xl mx-auto text-lg">
+            Rejoignez notre mission pour autonomiser les communautés grâce à l'éducation, la formation et la solidarité. Chaque action compte.
+          </p>
+    
+          <div class="flex flex-col sm:flex-row justify-center gap-6 mt-6">
+            <a href="/faire-un-don" class="inline-block bg-[#4fc5a3] hover:bg-[#3cb18d] text-[#21064d] font-semibold px-8 py-3 rounded-full transition">
+              Faire un don
+            </a>
+            <a href="/rejoindre" class="inline-block bg-transparent border-2 border-[#add670] text-[#add670] hover:bg-[#add670] hover:text-[#21064d] font-semibold px-8 py-3 rounded-full transition">
+              Nous rejoindre
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+  <!-- Footer -->
+  <footer class="bg-[#21064d] text-white py-8">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+          <p>&copy; 2025 Educ-Universel. Tous droits réservés.</p>
+          <div class="mt-4 flex justify-center gap-6">
+              <a href="#" class="hover:text-[#4fc5a3] transition"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="hover:text-[#4fc5a3] transition"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="hover:text-[#4fc5a3] transition"><i class="fab fa-instagram"></i></a>
+          </div>
+      </div>
+  </footer>
+</body>
+</html>
+
+        
+    <!-- Initialize Swiper -->
+    <script>
+      // Get references to elements
+      const gallery = document.querySelector('.gallery');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const closeButton = document.getElementById('close');
+    
+      // Add event listener to each image
+      gallery.addEventListener('click', e => {
+        if (e.target.classList.contains('gallery-image')) {
+          const imageSrc = e.target.src;
+          lightboxImage.src = imageSrc;
+          lightbox.style.display = 'flex';
+        }
+      });
+    
+      // Close lightbox when close button is clicked
+      closeButton.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+      });
+    
+      // Close lightbox when clicking outside the image
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) {
+          lightbox.style.display = 'none';
+        }
+      });
+    </script>
+                                                
+
+</body>
+</html>
