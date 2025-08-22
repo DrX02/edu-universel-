@@ -1,852 +1,1111 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ONG - Page d'accueil</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs" defer></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
 
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      .hero {
-        background-image: url("./img/h.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        /* background-color: #21064d; */
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educ-Universel - ONG pour l'éducation et le développement</title>
+  <meta name="description"
+    content="ONG dédiée à l'éducation, la formation et le développement durable au Bénin et en Afrique">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        background-size: cover;
-        background-position: center;
+  <style>
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(33, 6, 77, 0.9) 0%, rgba(79, 197, 163, 0.7) 100%);
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .slide-up {
+      animation: slideUp 0.8s ease-out;
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.03);
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
       }
-      .carousel-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.37);
-        z-index: 1;
+
+      to {
+        opacity: 1;
       }
-      /* .carousel-item {
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .text-shadow {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-primary {
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-link {
       position: relative;
+    }
+
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #4fc5a3;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover:after {
       width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    } */
-    </style>
-  </head>
-  <body class="font-sans antialiased bg-[#fefefe] text-[#21064d]">
-    <!-- Header avec menu mobile -->
-    <header class="bg-[#21064d] text-white p-4 sticky z-50">
-      <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-xl font-bold">Educ-universel</h1>
-        <div class="md:hidden" x-data="{ open: false }">
-          <button type="button" title="menu" @click="open = !open">
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
-          <div
-            x-show="open"
-            class="absolute left-0 right-0 bg-[#21064d] mt-2 space-y-2 text-center py-4 z-10"
-          >
-            <a href="index.html" class="block text-white hover:text-[#4fc5a3]"
-              >Accueil</a
-            >
-            <a
-              href="./pages/about/about.html"
-              class="block text-white hover:text-[#4fc5a3]"
-              >À propos</a
-            >
-            <!-- <a
-              href="./pages/about/about.html#missions"
-              class="block text-white hover:text-[#4fc5a3]"
-              >Mission</a
-            > -->
+    }
 
-            <a
-              href="./pages/gallerie/gallerie.html"
-              class="block text-white hover:text-[#4fc5a3]"
-              >Gallerie</a
-            >
-            <a
-              href="./pages/formation/formation.html"
-              class="block text-white hover:text-[#4fc5a3]"
-              >Activités</a
-            >
-            <a
-              href="./pages/contact/contact.html"
-              class="block text-white hover:text-[#4fc5a3]"
-              >Contact</a
-            >
-          </div>
-        </div>
-        <nav class="space-x-4 hidden md:block">
-          <a href="index.html" class="hover:text-[#4fc5a3]">Accueil</a>
-          <a href="./pages/about/about.html" class="hover:text-[#4fc5a3]"
-            >À propos</a
-          >
-          <!-- <a href="./pages/about/about.html#missions" class="hover:text-[#4fc5a3]"
-            >Missions</a
-          > -->
-          
-          <a href="./pages/gallerie/gallerie.html" class="hover:text-[#4fc5a3]"
-            >Gallerie</a
-          >
-          <a href="./pages/formation/formation.html" class="hover:text-[#4fc5a3]"
-            >Activités</a
-          >
-          <a href="./pages/contact/contact.html" class="hover:text-[#4fc5a3]">Contact</a>
-        </nav>
+    .mobile-menu {
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+      background: rgba(33, 6, 77, 0.7);
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased bg-[#fefefe] text-[#21064d]">
+  <!-- Header avec menu mobile amélioré -->
+  <header class="bg-[#21064d] text-white p-4 sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="./img/logo.jpg" alt="Logo Educ-Universel" class="w-12 h-12 rounded-full mr-3">
+        <h1
+          class="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#4fc5a3] to-[#add670] bg-clip-text text-transparent">
+          Educ-Universel</h1>
       </div>
-    </header>
 
-    <main class=" ">
-      <!-- Hero -->
-      <!-- <section class="bg-[#4fc5a3] text-white py-20 text-center">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold mb-4">Agir ensemble pour un avenir meilleur</h2>
-      <p class="text-lg mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <button class="bg-[#21064d] hover:bg-[#add670] text-white px-6 py-3 rounded">Faire un don</button>
+      <div class="md:hidden" x-data="{ open: false }">
+        <button type="button" title="menu" @click="open = !open" class="text-white focus:outline-none"
+          :class="{ 'text-[#4fc5a3]': open }">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"
+              x-show="!open"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" x-show="open"
+              style="display: none;"></path>
+          </svg>
+        </button>
+
+        <div x-show="open" @click.away="open = false" x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 transform -translate-y-2"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100 transform translate-y-0"
+          x-transition:leave-end="opacity-0 transform -translate-y-2"
+          class="absolute left-0 right-0 top-full bg-[#21064d] mt-2 space-y-3 text-center py-4 z-10 shadow-xl rounded-b-lg">
+          <a href="index.html" class="block py-2 text-white hover:text-[#4fc5a3] nav-link">Accueil</a>
+          <a href="./pages/about/about.html" class="block py-2 text-white hover:text-[#4fc5a3] nav-link">À propos</a>
+          <a href="./pages/gallerie/gallerie.html"
+            class="block py-2 text-white hover:text-[#4fc5a3] nav-link">Gallerie</a>
+          <a href="./pages/formation/formation.html"
+            class="block py-2 text-white hover:text-[#4fc5a3] nav-link">Activités</a>
+          <a href="./pages/contact/contact.html" class="block py-2 text-white hover:text-[#4fc5a3] nav-link">Contact</a>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex space-x-6 items-center">
+        <a href="index.html" class="text-white hover:text-[#4fc5a3] nav-link">Accueil</a>
+        <a href="./pages/about/about.html" class="text-white hover:text-[#4fc5a3] nav-link">À propos</a>
+        <a href="./pages/gallerie/gallerie.html" class="text-white hover:text-[#4fc5a3] nav-link">Gallerie</a>
+        <a href="./pages/formation/formation.html" class="text-white hover:text-[#4fc5a3] nav-link">Activités</a>
+        <a href="./pages/contact/contact.html" class="text-white hover:text-[#4fc5a3] nav-link">Contact</a>
+        <a href="#"
+          class="bg-[#4fc5a3] hover:bg-[#3ea88c] text-[#21064d] font-medium px-4 py-2 rounded-full btn-primary">
+          Faire un don
+        </a>
+      </nav>
     </div>
-  </section> -->
+  </header>
 
-      <!-- Hero -->
-      <div class="carousel-overlay h-[75vh]"></div>
-      <section
-        class="text-white py-20 text-center h-[68vh]"
-        style="
-          background-image: url('./img/hh.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-        "
-      >
-        <div
-          class="container mx-auto h-[70vh] flex flex-col justify-center items-center"
-        >
-          <h2 class="text-4xl md:text-6xl font-bold mb-4 z-10">
-            Agir ensemble pour un avenir meilleur
+  <main>
+    <!-- Hero section améliorée avec animation -->
+    <section class="relative h-screen flex items-center justify-center text-white overflow-hidden"
+      style="background-image: url('./img/hh.jpg'); background-size: cover; background-position: center;">
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+
+      <div class="container mx-auto px-4 z-10 text-center fade-in">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-shadow slide-up">
+          Agir ensemble pour un avenir meilleur
+        </h2>
+        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-shadow slide-up" style="animation-delay: 0.2s;">
+          Nous œuvrons pour l'éducation, la formation et le développement durable au Bénin et en Afrique.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 slide-up" style="animation-delay: 0.4s;">
+          <a href="#about"
+            class="bg-[#21064d] hover:bg-[#3a0b8a] text-white px-8 py-3 rounded-full font-medium btn-primary">
+            Découvrir
+          </a>
+          <a href="./pages/contact/contact.html"
+            class="bg-transparent border-2 border-white hover:bg-white hover:text-[#21064d] text-white px-8 py-3 rounded-full font-medium btn-primary">
+            Nous contacter
+          </a>
+        </div>
+      </div>
+
+      <a href="#about" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-10"
+        aria-label="Aller à la section suivante">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </a>
+    </section>
+
+    <!-- À propos section améliorée -->
+    <section id="about" class="py-20 px-4 max-w-7xl mx-auto">
+      <div class="container mx-auto">
+        <div class="text-center mb-16 slide-up">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
+            <span class="relative">
+              PRÉSENTATION DE L'ONG
+              <span class="absolute bottom-0 left-0 w-full h-1 bg-[#4fc5a3] transform scale-x-75"></span>
+            </span>
           </h2>
-          <p class="text-xl mb-6 z-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <button
-            type="button"
-            class="bg-[#21064d] hover:bg-[#add670] text-white px-6 py-3 rounded z-10"
-          >
-            Faire un don
-          </button>
+          <div class="w-24 h-1 bg-[#add670] mx-auto mt-4"></div>
         </div>
-      </section>
 
-      <!-- À propos -->
-      <section id="about" class="py-16 px-4 max-w-7xl mx-auto">
-        <div
-          class="container mx-auto flex flex-col md:flex-row items-center gap-10"
-        >
-          <img
-            src="./img/logo.jpg"
-            alt="ONG"
-            class="rounded shadow-lg w-96 h-96"
-          />
-          <div>
-            <h3 class="text-3xl font-semibold mb-4">PRESENTATION DE L’ONG</h3>
-            <p class="text-gray-700">
-              L’avenir n’est pas aléatoire, Il s’anticipe, se prépare et se
-              construit dès aujourd’hui. Désireux d’encourager une action
-              philanthropique tourner résolument vers l’avenir, Educ Universel
-              est une Organisation Non Gouvernementale (ONG) crée dans le but de
-              défendre le droit de l’homme à l’éducation et à la participation
-              culturelle. En Afrique et en particulier au Benin, des milliers de
-              jeunes courent le risque de rater des opportunités et de percevoir
-              de bas salaire plutard dans la vie parce que l’école ne parvient
-              pas à leur donner l’éducation dont ils ont besoin pour réussir.
-              Mettant en garde contre la crise de l’apprentissage dans
-              l’éducation nationale, la banque mondiale soutient que sans
-              apprentissage, la scolarisation n’est pas seulement une occasion
-              manquée, elle est également une grosse injustice pour les enfants
-              du monde entier. Educ universel soutient la mise en œuvre et
-              l’encrage de l’Education au Développement Durable(EDD) au niveau
-              de l’école primaire et secondaire et même universitaire. Educ
-              Universel contribue à rendre tous les individus, qu’ils aient des
-              handicaps, qu’ils soient des personnes âgées ou qu’ils se situent
-              dans la moyenne à une vie autonome et auto-responsable dans un
-              monde de plus en plus complexe.
+        <div class="flex flex-col lg:flex-row items-center gap-12 slide-up">
+          <div class="lg:w-1/2 hover-scale">
+            <img src="./img/logo.jpg" alt="ONG Educ-Universel"
+              class="rounded-lg shadow-xl w-full max-w-md mx-auto border-4 border-[#21064d]">
+          </div>
+
+          <div class="lg:w-1/2">
+            <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+              L'avenir n'est pas aléatoire, il s'anticipe, se prépare et se construit dès aujourd'hui. Désireux
+              d'encourager une action philanthropique tournée résolument vers l'avenir, Educ Universel est une
+              Organisation Non Gouvernementale (ONG) créée dans le but de défendre le droit de l'homme à l'éducation et
+              à la participation culturelle.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- domaines d'intervention -->
-      <section class="py-24 bg-gray-50">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <!-- Titre et introduction -->
-          <div class="mb-10 lg:mb-16 text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">
-              Nos domaines d'intervention
-            </h2>
-            <p class="text-lg text-gray-600">
-              L'ONG Educ Universel s’engage à œuvrer dans plusieurs secteurs
-              clés pour un développement durable et inclusif.
+            <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+              En Afrique et en particulier au Bénin, des milliers de jeunes courent le risque de rater des opportunités
+              et de percevoir de bas salaires plus tard dans la vie parce que l'école ne parvient pas à leur donner
+              l'éducation dont ils ont besoin pour réussir.
             </p>
-          </div>
-
-          <!-- Grille des domaines -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Education -->
-            <div
-              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-indigo-100"
-            >
-              <div class="flex justify-center mb-4">
-                <div class="bg-blue-200 p-4 rounded-full">
-                  <i class="fas fa-book-reader fa-3x text-blue-600"></i>
-                </div>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
-                Éducation
-              </h3>
-              <p class="text-gray-600 text-center text-sm">
-                Promouvoir l'accès à une éducation de qualité et équitable pour
-                tous, afin de favoriser le développement des compétences et des
-                connaissances.
-              </p>
-            </div>
-
-            <!-- Environnement -->
-            <div
-              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-green-100"
-            >
-              <div class="flex justify-center mb-4">
-                <div class="bg-green-200 p-4 rounded-full">
-                  <i class="fas fa-leaf fa-3x text-green-600"></i>
-                </div>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
-                Environnement
-              </h3>
-              <p class="text-gray-600 text-center text-sm">
-                Sensibiliser et agir pour la protection de l’environnement afin
-                de préserver notre planète pour les générations futures.
-              </p>
-            </div>
-
-            <!-- Agriculture -->
-            <div
-              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-yellow-100"
-            >
-              <div class="flex justify-center mb-4">
-                <div class="bg-yellow-200 p-4 rounded-full">
-                  <i class="fas fa-seedling fa-3x text-yellow-600"></i>
-                </div>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
-                Agriculture
-              </h3>
-              <p class="text-gray-600 text-center text-sm">
-                Soutenir le développement agricole durable pour améliorer la
-                sécurité alimentaire et les moyens de subsistance.
-              </p>
-            </div>
-
-            <!-- Métiers de l'artisanat -->
-            <div
-              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-orange-100"
-            >
-              <div class="flex justify-center mb-4">
-                <div class="bg-orange-200 p-4 rounded-full">
-                  <i class="fas fa-tools fa-3x text-orange-600"></i>
-                </div>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
-                Métiers de l'artisanat
-              </h3>
-              <p class="text-gray-600 text-center text-sm">
-                Encourager le développement des compétences artisanales pour
-                favoriser l'insertion socio-économique et la valorisation des
-                savoir-faire locaux.
-              </p>
-            </div>
-
-            <!-- Education artistique, culturel et sportif -->
-            <div
-              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-purple-100"
-            >
-              <div class="flex justify-center mb-4">
-                <div class="bg-purple-200 p-4 rounded-full">
-                  <i class="fas fa-music fa-3x text-purple-600"></i>
-                </div>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
-                Education Artistique, Culturelle & Sportive
-              </h3>
-              <p class="text-gray-600 text-center text-sm">
-                Favoriser la créativité, la culture et la pratique sportive pour
-                le développement global des jeunes et la cohésion sociale.
-              </p>
-            </div>
-
-            <!-- Formation -->
-            <div
-              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-red-100"
-            >
-              <div class="flex justify-center mb-4">
-                <div class="bg-red-200 p-4 rounded-full">
-                  <i class="fas fa-graduation-cap fa-3x text-red-600"></i>
-                </div>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
-                Formation
-              </h3>
-              <p class="text-gray-600 text-center text-sm">
-                Renforcer les capacités et compétences à travers la formation
-                continue pour soutenir l’émancipation et la croissance
-                personnelle.
-              </p>
-            </div>
-
-            <!-- Partenariats et Coopération -->
-            <div
-              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-indigo-100"
-            >
-              <div class="flex justify-center mb-4">
-                <div class="bg-indigo-200 p-4 rounded-full">
-                  <i class="fas fa-handshake fa-3x text-indigo-600"></i>
-                </div>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
-                Partenariats & Coopération
-              </h3>
-              <p class="text-gray-600 text-center text-sm">
-                Établir des collaborations stratégiques avec des acteurs locaux,
-                nationaux et internationaux pour renforcer notre action commune.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Nos Actions -->
-      <section 
-        class="bg-[#add670] py-16 px-4 h-96"
-        style="
-          background-image: url('./img/h.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: cover;
-          background-position: center;
-        "
-      >
-        <div class="container mx-auto text-center text-[#21064d]">
-          <!-- <h3 class="text-3xl font-bold mb-10">Nos actions</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-white p-6 rounded shadow">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Action"
-              class="mb-4 rounded"
-            />
-            <h4 class="text-xl font-semibold mb-2">Éducation</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          </div>
-          <div class="bg-white p-6 rounded shadow">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Action"
-              class="mb-4 rounded"
-            />
-            <h4 class="text-xl font-semibold mb-2">Santé</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          </div>
-          <div class="bg-white p-6 rounded shadow">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Action"
-              class="mb-4 rounded"
-            />
-            <h4 class="text-xl font-semibold mb-2">Environnement</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          </div>
-        </div> -->
-        </div>
-      </section>
-
-      <section id="actions" class="bg-gray-50 py-16 px-4 max-w-7xl mx-auto">
-        <div class="container mx-auto text-center text-[#21064d]">
-          <h3 class="text-3xl font-bold mb-10">Nos actions</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded shadow">
-              <img src="./img/atr/3.jpg" alt="Action" class="mb-4 rounded" />
-              <h4 class="text-xl font-semibold mb-2">Titre</h4>
-              <p>Description</p>
-            </div>
-            <div class="bg-white p-6 rounded shadow">
-              <img src="./img/atr/5.jpg" alt="Action" class="mb-4 rounded" />
-              <h4 class="text-xl font-semibold mb-2">Titre</h4>
-              <p>Description</p>
-            </div>
-            <div class="bg-white p-6 rounded shadow">
-              <img src="./img/atr/6.jpg" alt="Action" class="mb-4 rounded" />
-
-              <h4 class="text-xl font-semibold mb-2">Titre</h4>
-              <p>Description</p>
-            </div>
-            <div class="bg-white p-6 rounded shadow">
-              <img src="./img/atr/11.jpg" alt="Action" class="mb-4 rounded" />
-
-              <h4 class="text-xl font-semibold mb-2">Titre</h4>
-              <p>Description</p>
-            </div>
-            <div class="bg-white p-6 rounded shadow">
-              <img src="./img/atr/8.jpg" alt="Action" class="mb-4 rounded" />
-
-              <h4 class="text-xl font-semibold mb-2">Titre</h4>
-              <p>Description</p>
-            </div>
-            <div class="bg-white p-6 rounded shadow">
-              <img src="./img/atr/4.jpg" alt="Action" class="mb-4 rounded" />
-
-              <h4 class="text-xl font-semibold mb-2">Titre</h4>
-              <p>Description</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Activités -->
-      <section class="bg-white ">
-        <div
-          class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
-        >
-          <img
-            class="w-full "
-            src="./img/agr/2.jpg"
-            alt="dashboard image"
-          />
-          <!-- <img class="w-full hidden " src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image"> -->
-          <div class="mt-4 md:mt-0">
-            <h2
-              class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 "
-            >
-              Créons ensemble un environnement avenir meilleur
-            </h2>
-            <p
-              class="mb-6 font-light text-gray-500 md:text-lg "
-            >
-              Nous croyons que chaque individu a le potentiel de contribuer à un
-              avenir meilleur. C'est pourquoi nous nous engageons à créer des
-              outils et des idées qui favorisent la collaboration et l'entraide
-              au sein de nos communautés.
+            <p class="text-gray-700 text-lg leading-relaxed">
+              Educ Universel soutient la mise en œuvre et l'ancrage de l'Éducation au Développement Durable (EDD) au
+              niveau de l'école primaire, secondaire et même universitaire. Nous contribuons à rendre tous les
+              individus, qu'ils aient des handicaps, qu'ils soient des personnes âgées ou qu'ils se situent dans la
+              moyenne, à une vie autonome et auto-responsable dans un monde de plus en plus complexe.
             </p>
-            <a
-              href="#"
-              class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-            >
-              Get started
-              <svg
-                class="ml-2 -mr-1 w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
 
-      <!-- Activités -->
-      <section class="bg-white  max-w-7xl mx-auto">
-        <div
-          class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
-        >
-          <div class="mt-4 md:mt-0">
-            <h2
-              class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 "
-            >
-            Connectons-nous pour un avenir meilleur
-            </h2>
-            <p
-              class="mb-6 font-light text-gray-500 md:text-lg "
-            >
-              Nous croyons que chaque individu a le potentiel de contribuer à un
-              avenir meilleur. C'est pourquoi nous nous engageons à créer des
-              outils et des idées qui favorisent la collaboration et l'entraide
-              au sein de nos communautés.
-            </p>
-            <a
-              href="#"
-              class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-            >
-              Get started
-              <svg
-                class="ml-2 -mr-1 w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </a>
-          </div>
-          <img
-            class="w-full "
-            src="./img/ctr/1.jpg"
-            alt="dashboard image"
-          />
-          <!-- <img class="w-full hidden " src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image"> -->
-        </div>
-      </section>
-
-      <!-- Projets -->
-      <!-- <section class="py-16 px-4 max-w-7xl mx-auto">
-        <div class="container mx-auto text-center">
-          <h3 class="text-3xl font-bold mb-10">Nos projets</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-[#4fc5a3] text-white p-6 rounded shadow-lg">
-              <h4 class="text-xl font-semibold mb-2">Projet Alpha</h4>
-              
-              <p>Description</p>
-            </div>
-            <div class="bg-[#21064d] text-white p-6 rounded shadow-lg">
-              <h4 class="text-xl font-semibold mb-2">Projet Beta</h4>
-              
-              <p>Description</p>
-            </div>
-            <div class="bg-[#add670] text-[#21064d] p-6 rounded shadow-lg">
-              <h4 class="text-xl font-semibold mb-2">Projet Gamma</h4>
-              
-              <p>Description</p>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <!-- Événements -->
-      <!-- component -->
-      <section
-        class="text-gray-600 body-font overflow-hidden max-w-7xl mx-auto"
-      >
-        <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-col text-center w-full mb-20">
-            <h1
-              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
-            >
-              Nos événements récents
-            </h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Découvrez les moments forts de nos dernières activités et
-              initiatives. Chaque événement est une occasion de rassembler la
-              communauté et de promouvoir nos valeurs.
-            </p>
-          </div>
-          <div class="flex flex-wrap -m-4">
-            <div class="lg:w-1/3 sm:w-1/2 p-4">
-              <div class="flex relative">
-                <img
-                  alt="gallery"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  src="./img/agr/3.jpg"
-                />
-                <div
-                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-                >
-                  <h2
-                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-                  >
-                    THE SUBTITLE
-                  </h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-                    Shooting Stars
-                  </h1>
-                  <p class="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <div class="flex items-center">
+                <div class="bg-[#4fc5a3] rounded-full p-2 mr-3">
+                  <i class="fas fa-check text-white"></i>
                 </div>
+                <span class="font-medium">Éducation pour tous</span>
               </div>
-            </div>
-            <div class="lg:w-1/3 sm:w-1/2 p-4">
-              <div class="flex relative">
-                <img
-                  alt="gallery"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  src="./img/agr/12.jpg"
-                />
-                <div
-                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-                >
-                  <h2
-                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-                  >
-                    THE SUBTITLE
-                  </h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-                    The Catalyzer
-                  </h1>
-                  <p class="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
+              <div class="flex items-center">
+                <div class="bg-[#4fc5a3] rounded-full p-2 mr-3">
+                  <i class="fas fa-check text-white"></i>
                 </div>
+                <span class="font-medium">Développement durable</span>
               </div>
-            </div>
-            <div class="lg:w-1/3 sm:w-1/2 p-4">
-              <div class="flex relative">
-                <img
-                  alt="gallery"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  src="./img/agr/7.jpg"
-                />
-                <div
-                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-                >
-                  <h2
-                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-                  >
-                    THE SUBTITLE
-                  </h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-                    The 400 Blows
-                  </h1>
-                  <p class="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
+              <div class="flex items-center">
+                <div class="bg-[#4fc5a3] rounded-full p-2 mr-3">
+                  <i class="fas fa-check text-white"></i>
                 </div>
-              </div>
-            </div>
-            <div class="lg:w-1/3 sm:w-1/2 p-4">
-              <div class="flex relative">
-                <img
-                  alt="gallery"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  src="./img/ctr/1.jpg"
-                />
-                <div
-                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-                >
-                  <h2
-                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-                  >
-                    THE SUBTITLE
-                  </h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-                    Neptune
-                  </h1>
-                  <p class="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="lg:w-1/3 sm:w-1/2 p-4">
-              <div class="flex relative">
-                <img
-                  alt="gallery"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  src="./img/ctr/3.jpg"
-                />
-                <div
-                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-                >
-                  <h2
-                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-                  >
-                    THE SUBTITLE
-                  </h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-                    Holden Caulfield
-                  </h1>
-                  <p class="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="lg:w-1/3 sm:w-1/2 p-4">
-              <div class="flex relative">
-                <img
-                  alt="gallery"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  src="./img/ctr/2.jpg"
-                />
-                <div
-                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-                >
-                  <h2
-                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-                  >
-                    THE SUBTITLE
-                  </h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-                    Alper Kamu
-                  </h1>
-                  <p class="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
+                <span class="font-medium">Autonomisation</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      <!-- component -->
-      <!-- <div class="relative w-full h-[80vh] bg-slate-800">
-  <input
-    aria-label="projet 1"
-    class="hidden peer/slider1 checkbox"
-    type="radio"
-    name="slider"
-    id="slider1"
-    checked
-  />
-  <input
-    aria-label="projet 2"
-    class="hidden peer/slider2 checkbox"
-    type="radio"
-    name="slider"
-    id="slider2"
-  />
-  <input
-  aria-label="projet 3"
-    class="hidden peer/slider3 checkbox"
-    type="radio"
-    name="slider"
-    id="slider3"
-  />
-
-  <div
-    class="relative w-[300vw] h-[100%] flex transition-all duration-500 ease-in-out peer-checked/slider1:-left-0 peer-checked/slider2:-left-[100vw] peer-checked/slider3:-left-[200vw]"
-  >
-    <div class="relative w-full h-full flex bg-red-500">
-
-    </div>
-    <div class="relative w-full h-full flex bg-amber-500"></div>
-    <div class="relative w-full h-full flex bg-emerald-500"></div>
-  </div>
-
-  <div
-    class="absolute w-full flex justify-center gap-2 bottom-12 peer-[&_label:nth-of-type(1)]/slider1:peer-checked/slider1:opacity-100 peer-[&_label:nth-of-type(1)]/slider1:peer-checked/slider1:w-10 peer-[&_label:nth-of-type(2)]/slider2:peer-checked/slider2:opacity-100 peer-[&_label:nth-of-type(2)]/slider2:peer-checked/slider2:w-10 peer-[&_label:nth-of-type(3)]/slider3:peer-checked/slider3:opacity-100 peer-[&_label:nth-of-type(3)]/slider3:peer-checked/slider3:w-10"
-  >
-    <label
-      class="block w-5 h-5 bg-white cursor-pointer opacity-50 z-10 transition-all duration-300 ease-in-out hover:scale-125 hover:opacity-100"
-      for="slider1"
-    >
-    </label>
-    <label
-      class="block w-5 h-5 bg-white cursor-pointer opacity-50 z-10 transition-all duration-300 ease-in-out hover:scale-125 hover:opacity-100"
-      for="slider2"
-    >
-    </label>
-    <label
-      class="block w-5 h-5 bg-white cursor-pointer opacity-50 z-10 transition-all duration-300 ease-in-out hover:scale-125 hover:opacity-100"
-      for="slider3"
-    >
-    </label>
-  </div>
-</div> -->
-
-      <!-- Témoignages -->
-
-      <!-- Partenaires -->
-      <!-- <section class="py-16 px-4">
-        <div class="container mx-auto text-center">
-          <h3 class="text-3xl font-bold mb-10">Nos partenaires</h3>
-          <div class="flex flex-wrap justify-center items-center gap-10">
-            <img
-              src="https://via.placeholder.com/100x50"
-              alt="Logo Partenaire"
-            />
-            <img
-              src="https://via.placeholder.com/100x50"
-              alt="Logo Partenaire"
-            />
-            <img
-              src="https://via.placeholder.com/100x50"
-              alt="Logo Partenaire"
-            />
-          </div>
-        </div>
-      </section> -->
-
-    <!-- Call to Action Section -->
-    <section class="py-16 bg-[#21064d] text-white">
-      <div class="max-w-5xl mx-auto px-4 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">Rejoignez-nous dans notre mission</h2>
-          <p class="text-lg mb-8">Ensemble, nous pouvons faire la différence. Participez à nos activités ou soutenez-nous par un don.</p>
-          <a href="./pages/contact/contact.html" class="bg-[#4fc5a3] hover:bg-[#3ea88c] text-white font-semibold py-3 px-6 rounded-lg transition duration-300">Contactez-nous</a>
       </div>
-  </section>
+    </section>
 
-  <section class="py-20 bg-[#4fc5a3]">
+    <!-- Domaines d'intervention améliorés -->
+    <section class="py-20 bg-gray-50">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="bg-[#21064d] rounded-2xl p-8 xl:p-11 shadow-xl">
-          <h2 class="font-manrope text-4xl text-white text-center font-bold mb-4">
-            Agissons ensemble pour un avenir meilleur
+        <div class="text-center mb-16 slide-up">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            Nos domaines d'intervention
           </h2>
-          <p class="text-[#add670] text-center mb-10 max-w-2xl mx-auto text-lg">
-            Rejoignez notre mission pour autonomiser les communautés grâce à l'éducation, la formation et la solidarité. Chaque action compte.
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            L'ONG Educ Universel s'engage à œuvrer dans plusieurs secteurs clés pour un développement durable et
+            inclusif.
           </p>
-    
-          <div class="flex flex-col sm:flex-row justify-center gap-6 mt-6">
-            <a href="./pages/contact/contact.html" class="inline-block bg-[#4fc5a3] hover:bg-[#3cb18d] text-[#21064d] font-semibold px-8 py-3 rounded-full transition">
-              Faire un don
+          <div class="w-24 h-1 bg-[#add670] mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Éducation -->
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 card-hover"
+            x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+            <div class="flex justify-center mb-4">
+              <div class="p-4 rounded-full transition-all duration-300" :class="hover ? 'bg-blue-100' : 'bg-blue-50'">
+                <i class="fas fa-book-reader fa-3x text-blue-600"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">
+              Éducation
+            </h3>
+            <p class="text-gray-600 text-center">
+              Promouvoir l'accès à une éducation de qualité et équitable pour tous, afin de favoriser le développement
+              des compétences et des connaissances.
+            </p>
+          </div>
+
+          <!-- Environnement -->
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 card-hover"
+            x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+            <div class="flex justify-center mb-4">
+              <div class="p-4 rounded-full transition-all duration-300" :class="hover ? 'bg-green-100' : 'bg-green-50'">
+                <i class="fas fa-leaf fa-3x text-green-600"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">
+              Environnement
+            </h3>
+            <p class="text-gray-600 text-center">
+              Sensibiliser et agir pour la protection de l'environnement afin de préserver notre planète pour les
+              générations futures.
+            </p>
+          </div>
+
+          <!-- Agriculture -->
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 card-hover"
+            x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+            <div class="flex justify-center mb-4">
+              <div class="p-4 rounded-full transition-all duration-300"
+                :class="hover ? 'bg-yellow-100' : 'bg-yellow-50'">
+                <i class="fas fa-seedling fa-3x text-yellow-600"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">
+              Agriculture
+            </h3>
+            <p class="text-gray-600 text-center">
+              Soutenir le développement agricole durable pour améliorer la sécurité alimentaire et les moyens de
+              subsistance.
+            </p>
+          </div>
+
+          <!-- Métiers de l'artisanat -->
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 card-hover"
+            x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+            <div class="flex justify-center mb-4">
+              <div class="p-4 rounded-full transition-all duration-300"
+                :class="hover ? 'bg-orange-100' : 'bg-orange-50'">
+                <i class="fas fa-tools fa-3x text-orange-600"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">
+              Métiers de l'artisanat
+            </h3>
+            <p class="text-gray-600 text-center">
+              Encourager le développement des compétences artisanales pour favoriser l'insertion socio-économique et la
+              valorisation des savoir-faire locaux.
+            </p>
+          </div>
+
+          <!-- Education artistique, culturel et sportif -->
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 card-hover"
+            x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+            <div class="flex justify-center mb-4">
+              <div class="p-4 rounded-full transition-all duration-300"
+                :class="hover ? 'bg-purple-100' : 'bg-purple-50'">
+                <i class="fas fa-music fa-3x text-purple-600"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">
+              Éducation Artistique, Culturelle & Sportive
+            </h3>
+            <p class="text-gray-600 text-center">
+              Favoriser la créativité, la culture et la pratique sportive pour le développement global des jeunes et la
+              cohésion sociale.
+            </p>
+          </div>
+
+          <!-- Formation -->
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 card-hover"
+            x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+            <div class="flex justify-center mb-4">
+              <div class="p-4 rounded-full transition-all duration-300" :class="hover ? 'bg-red-100' : 'bg-red-50'">
+                <i class="fas fa-graduation-cap fa-3x text-red-600"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">
+              Formation
+            </h3>
+            <p class="text-gray-600 text-center">
+              Renforcer les capacités et compétences à travers la formation continue pour soutenir l'émancipation et la
+              croissance personnelle.
+            </p>
+          </div>
+
+          <!-- Partenariats et Coopération -->
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 card-hover"
+            x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+            <div class="flex justify-center mb-4">
+              <div class="p-4 rounded-full transition-all duration-300"
+                :class="hover ? 'bg-indigo-100' : 'bg-indigo-50'">
+                <i class="fas fa-handshake fa-3x text-indigo-600"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">
+              Partenariats & Coopération
+            </h3>
+            <p class="text-gray-600 text-center">
+              Établir des collaborations stratégiques avec des acteurs locaux, nationaux et internationaux pour
+              renforcer notre action commune.
+            </p>
+          </div>
+
+          <!-- Autre domaine -->
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 card-hover"
+            x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+            <div class="flex justify-center mb-4">
+              <div class="p-4 rounded-full transition-all duration-300" :class="hover ? 'bg-pink-100' : 'bg-pink-50'">
+                <i class="fas fa-hands-helping fa-3x text-pink-600"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">
+              Inclusion Sociale
+            </h3>
+            <p class="text-gray-600 text-center">
+              Promouvoir l'inclusion des personnes vulnérables et marginalisées pour une société plus équitable et
+              solidaire.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Parallax -->
+    <section class="py-32 parallax relative" style="background-image: url('./img/h.jpg');">
+      <div class="absolute inset-0 bg-[#21064d] opacity-70"></div>
+      <div class="container mx-auto px-4 relative z-10 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 slide-up">
+          Chaque action compte
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto slide-up" style="animation-delay: 0.2s;">
+          Rejoignez notre communauté de bénévoles et contributeurs pour créer un impact durable.
+        </p>
+        <div class="slide-up" style="animation-delay: 0.4s;">
+          <a href="./pages/contact/contact.html"
+            class="inline-block bg-[#4fc5a3] hover:bg-[#3ea88c] text-white font-semibold px-8 py-3 rounded-full btn-primary">
+            Devenir bénévole
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nos Actions améliorées -->
+    <section id="actions" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 slide-up">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            Nos actions sur le terrain
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Découvrez nos réalisations concrètes et leur impact sur les communautés.
+          </p>
+          <div class="w-24 h-1 bg-[#add670] mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Action 1 -->
+          <div class="rounded-lg overflow-hidden shadow-lg card-hover">
+            <div class="relative gallery-item h-64">
+              <img src="./img/atr/3.jpg" alt="Action de l'ONG" class="w-full h-full object-cover">
+              <div class="absolute inset-0 gallery-overlay opacity-0 flex items-center justify-center">
+                <a href="./img/atr/3.jpg" class="text-white text-xl bg-[#4fc5a3] rounded-full p-3 hover:bg-[#3ea88c]"
+                  data-lightbox="actions" data-title="Action de l'ONG">
+                  <i class="fas fa-expand"></i>
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Formation en agriculture durable</h3>
+              <p class="text-gray-600 mb-4">
+                Programme de formation pour les agriculteurs locaux sur les techniques agricoles durables et
+                respectueuses de l'environnement.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                <span>Bénin, 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action 2 -->
+          <div class="rounded-lg overflow-hidden shadow-lg card-hover">
+            <div class="relative gallery-item h-64">
+              <img src="./img/atr/5.jpg" alt="Action de l'ONG" class="w-full h-full object-cover">
+              <div class="absolute inset-0 gallery-overlay opacity-0 flex items-center justify-center">
+                <a href="./img/atr/5.jpg" class="text-white text-xl bg-[#4fc5a3] rounded-full p-3 hover:bg-[#3ea88c]"
+                  data-lightbox="actions" data-title="Action de l'ONG">
+                  <i class="fas fa-expand"></i>
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Ateliers éducatifs</h3>
+              <p class="text-gray-600 mb-4">
+                Organisation d'ateliers éducatifs pour les enfants des communautés rurales avec distribution de
+                fournitures scolaires.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                <span>Bénin, 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action 3 -->
+          <div class="rounded-lg overflow-hidden shadow-lg card-hover">
+            <div class="relative gallery-item h-64">
+              <img src="./img/atr/6.jpg" alt="Action de l'ONG" class="w-full h-full object-cover">
+              <div class="absolute inset-0 gallery-overlay opacity-0 flex items-center justify-center">
+                <a href="./img/atr/6.jpg" class="text-white text-xl bg-[#4fc5a3] rounded-full p-3 hover:bg-[#3ea88c]"
+                  data-lightbox="actions" data-title="Action de l'ONG">
+                  <i class="fas fa-expand"></i>
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Sensibilisation environnementale</h3>
+              <p class="text-gray-600 mb-4">
+                Campagne de sensibilisation sur la protection de l'environnement et le recyclage dans les écoles
+                primaires.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                <span>Bénin, 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action 4 -->
+          <div class="rounded-lg overflow-hidden shadow-lg card-hover">
+            <div class="relative gallery-item h-64">
+              <img src="./img/atr/11.jpg" alt="Action de l'ONG" class="w-full h-full object-cover">
+              <div class="absolute inset-0 gallery-overlay opacity-0 flex items-center justify-center">
+                <a href="./img/atr/11.jpg" class="text-white text-xl bg-[#4fc5a3] rounded-full p-3 hover:bg-[#3ea88c]"
+                  data-lightbox="actions" data-title="Action de l'ONG">
+                  <i class="fas fa-expand"></i>
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Formation artisanale</h3>
+              <p class="text-gray-600 mb-4">
+                Programme de formation aux métiers de l'artisanat local pour les jeunes en situation précaire.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                <span>Bénin, 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action 5 -->
+          <div class="rounded-lg overflow-hidden shadow-lg card-hover">
+            <div class="relative gallery-item h-64">
+              <img src="./img/atr/8.jpg" alt="Action de l'ONG" class="w-full h-full object-cover">
+              <div class="absolute inset-0 gallery-overlay opacity-0 flex items-center justify-center">
+                <a href="./img/atr/8.jpg" class="text-white text-xl bg-[#4fc5a3] rounded-full p-3 hover:bg-[#3ea88c]"
+                  data-lightbox="actions" data-title="Action de l'ONG">
+                  <i class="fas fa-expand"></i>
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Activités sportives</h3>
+              <p class="text-gray-600 mb-4">
+                Organisation d'activités sportives pour promouvoir la santé et la cohésion sociale parmi les jeunes.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                <span>Bénin, 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action 6 -->
+          <div class="rounded-lg overflow-hidden shadow-lg card-hover">
+            <div class="relative gallery-item h-64">
+              <img src="./img/atr/4.jpg" alt="Action de l'ONG" class="w-full h-full object-cover">
+              <div class="absolute inset-0 gallery-overlay opacity-0 flex items-center justify-center">
+                <a href="./img/atr/4.jpg" class="text-white text-xl bg-[#4fc5a3] rounded-full p-3 hover:bg-[#3ea88c]"
+                  data-lightbox="actions" data-title="Action de l'ONG">
+                  <i class="fas fa-expand"></i>
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Ateliers culturels</h3>
+              <p class="text-gray-600 mb-4">
+                Promotion de la culture locale à travers des ateliers de danse, musique et arts traditionnels.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                <span>Bénin, 2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10 slide-up">
+          <a href="./pages/gallerie/gallerie.html"
+            class="inline-block border-2 border-[#21064d] text-[#21064d] hover:bg-[#21064d] hover:text-white font-semibold px-8 py-3 rounded-full transition">
+            Voir plus d'actions
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Mission améliorée -->
+    <section class="bg-white">
+      <div class="gap-8 items-center py-16 px-4 mx-auto max-w-7xl md:grid md:grid-cols-2">
+        <div class="relative hover-scale">
+          <img class="w-full rounded-xl shadow-xl" src="./img/agr/2.jpg" alt="Mission de l'ONG">
+          <div class="absolute -bottom-5 -right-5 bg-[#4fc5a3] text-white p-4 rounded-lg shadow-lg">
+            <i class="fas fa-heart fa-2x"></i>
+          </div>
+        </div>
+
+        <div class="mt-8 md:mt-0">
+          <h2 class="mb-4 text-3xl md:text-4xl font-bold text-gray-900">
+            Créons ensemble un environnement pour un avenir meilleur
+          </h2>
+          <p class="mb-6 text-gray-600 text-lg">
+            Nous croyons que chaque individu a le potentiel de contribuer à un avenir meilleur. C'est pourquoi nous nous
+            engageons à créer des outils et des idées qui favorisent la collaboration et l'entraide au sein de nos
+            communautés.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-[#4fc5a3] text-white">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+              </div>
+              <p class="ml-3 text-gray-600">
+                <span class="font-medium text-gray-900">Autonomisation</span> – Nous aidons les individus à développer
+                leur potentiel.
+              </p>
+            </div>
+
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-[#4fc5a3] text-white">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+              </div>
+              <p class="ml-3 text-gray-600">
+                <span class="font-medium text-gray-900">Durabilité</span> – Nos actions sont conçues pour avoir un
+                impact à long terme.
+              </p>
+            </div>
+
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-[#4fc5a3] text-white">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+              </div>
+              <p class="ml-3 text-gray-600">
+                <span class="font-medium text-gray-900">Inclusion</span> – Personne n'est laissé pour compte dans nos
+                programmes.
+              </p>
+            </div>
+          </div>
+
+          <a href="./pages/about/about.html"
+            class="inline-flex items-center text-white bg-[#21064d] hover:bg-[#3a0b8a] font-medium rounded-lg text-sm px-5 py-3 text-center btn-primary">
+            En savoir plus
+            <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Connect améliorée -->
+    <section class="bg-gray-50">
+      <div class="gap-8 items-center py-16 px-4 mx-auto max-w-7xl md:grid md:grid-cols-2">
+        <div class="order-2 md:order-1">
+          <h2 class="mb-4 text-3xl md:text-4xl font-bold text-gray-900">
+            Connectons-nous pour un avenir meilleur
+          </h2>
+          <p class="mb-6 text-gray-600 text-lg">
+            Notre approche collaborative rassemble des acteurs locaux et internationaux pour maximiser l'impact de nos
+            actions. Ensemble, nous pouvons relever les défis éducatifs et sociaux les plus pressants.
+          </p>
+
+          <div class="mb-8">
+            <div class="flex mb-4">
+              <div class="text-[#4fc5a3] mr-4">
+                <i class="fas fa-users fa-2x"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-1">Communauté engagée</h4>
+                <p class="text-gray-600">Plus de 500 bénévoles actifs dans nos programmes.</p>
+              </div>
+            </div>
+
+            <div class="flex mb-4">
+              <div class="text-[#4fc5a3] mr-4">
+                <i class="fas fa-project-diagram fa-2x"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-1">Réseau de partenaires</h4>
+                <p class="text-gray-600">Collaboration avec 20+ organisations locales et internationales.</p>
+              </div>
+            </div>
+
+            <div class="flex">
+              <div class="text-[#4fc5a3] mr-4">
+                <i class="fas fa-chart-line fa-2x"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-1">Impact mesurable</h4>
+                <p class="text-gray-600">10,000+ bénéficiaires directs de nos programmes depuis 2020.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4 pb-8">
+            <a href="./pages/contact/contact.html"
+              class="inline-flex items-center text-white bg-[#21064d] hover:bg-[#3a0b8a] font-medium rounded-lg text-sm px-5 py-3 text-center btn-primary">
+              Nous contacter
             </a>
-            <a href="./pages/contact/contact.html" class="inline-block bg-transparent border-2 border-[#add670] text-[#add670] hover:bg-[#add670] hover:text-[#21064d] font-semibold px-8 py-3 rounded-full transition">
-              Nous rejoindre
+            <a href="#"
+              class="inline-flex items-center text-[#21064d] bg-white hover:bg-gray-100 border border-[#21064d] font-medium rounded-lg text-sm px-5 py-3 text-center btn-primary">
+              <i class="fas fa-donate mr-2"></i> Faire un don
+            </a>
+          </div>
+        </div>
+
+        <div class="relative order-1 md:order-2 hover-scale">
+          <img class="w-full rounded-xl shadow-xl" src="./img/ctr/1.jpg" alt="Connectons-nous">
+          <div class="absolute -bottom-5 -left-5 bg-[#add670] text-[#21064d] p-4 rounded-lg shadow-lg">
+            <i class="fas fa-handshake fa-2x"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Événements améliorés -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 slide-up">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            Nos activités récentes
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Découvrez les moments forts de nos dernières activités et initiatives.
+          </p>
+          <div class="w-24 h-1 bg-[#add670] mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Événement 1 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+            <div class="relative h-48">
+              <img src="./img/agr/3.jpg" alt="Événement" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-[#4fc5a3] text-white px-3 py-1 rounded-full text-sm font-medium">
+                Formation
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <i class="fas fa-calendar-alt mr-2 text-[#4fc5a3]"></i>
+                <span>15 Mars 2023</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Atelier d'agriculture durable</h3>
+              <p class="text-gray-600 mb-4">
+                Formation pratique sur les techniques agricoles durables pour les agriculteurs locaux.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                  <span>Cotonou, Bénin</span>
+                </div>
+                <a href="#" class="text-[#4fc5a3] hover:text-[#3ea88c] text-sm font-medium">
+                  En savoir plus
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Événement 2 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+            <div class="relative h-48">
+              <img src="./img/agr/12.jpg" alt="Événement" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-[#21064d] text-white px-3 py-1 rounded-full text-sm font-medium">
+                Agriculture
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <i class="fas fa-calendar-alt mr-2 text-[#4fc5a3]"></i>
+                <span>22 Avril 2023</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Journée de l'éducation</h3>
+              <p class="text-gray-600 mb-4">
+                Célébration de la journée mondiale de l'éducation avec des activités pour les enfants.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                  <span>Porto-Novo, Bénin</span>
+                </div>
+                <a href="#" class="text-[#4fc5a3] hover:text-[#3ea88c] text-sm font-medium">
+                  En savoir plus
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Événement 3 -->
+          <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+            <div class="relative h-48">
+              <img src="./img/agr/7.jpg" alt="Événement" class="w-full h-full object-cover">
+              <div
+                class="absolute top-4 right-4 bg-[#add670] text-[#21064d] px-3 py-1 rounded-full text-sm font-medium">
+                Environnement
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <i class="fas fa-calendar-alt mr-2 text-[#4fc5a3]"></i>
+                <span>5 Juin 2023</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Opération de reboisement</h3>
+              <p class="text-gray-600 mb-4">
+                Campagne de plantation d'arbres avec la participation des écoles locales pour la journée mondiale de
+                l'environnement.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-map-marker-alt mr-2 text-[#4fc5a3]"></i>
+                  <span>Abomey, Bénin</span>
+                </div>
+                <a href="#" class="text-[#4fc5a3] hover:text-[#3ea88c] text-sm font-medium">
+                  En savoir plus
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12 slide-up">
+          <a href="./pages/formation/formation.html"
+            class="inline-block bg-[#21064d] hover:bg-[#3a0b8a] text-white font-semibold px-8 py-3 rounded-full btn-primary">
+            Voir tous nos événements
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action amélioré -->
+    <section class="py-20 bg-gradient-to-r from-[#21064d] to-[#4a0d9b] text-white">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 slide-up">
+            Rejoignez-nous dans notre mission
+          </h2>
+          <p class="text-lg mb-8 max-w-2xl mx-auto slide-up" style="animation-delay: 0.2s;">
+            Ensemble, nous pouvons faire la différence. Participez à nos activités ou soutenez-nous par un don.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4 slide-up" style="animation-delay: 0.4s;">
+            <a href="./pages/contact/contact.html"
+              class="bg-[#4fc5a3] hover:bg-[#3ea88c] text-white font-semibold px-8 py-3 rounded-full btn-primary">
+              Devenir bénévole
+            </a>
+            <a href="#"
+              class="bg-transparent border-2 border-white hover:bg-white hover:text-[#21064d] text-white font-semibold px-8 py-3 rounded-full btn-primary">
+              Faire un don
             </a>
           </div>
         </div>
       </div>
     </section>
-    <!-- Footer -->
-    <footer class="bg-[#21064d] text-white py-8">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <p>&copy; 2025 Educ-Universel. Tous droits réservés.</p>
-        <div class="mt-4 flex justify-center gap-6">
-          <a title="link" href="#" class="hover:text-[#4fc5a3] transition"
-            ><i class="fab fa-facebook"></i
-          ></a>
-          <a href="#" title="link" class="hover:text-[#4fc5a3] transition"
-            ><i class="fab fa-twitter"></i
-          ></a>
-          <a href="#" title="link" class="hover:text-[#4fc5a3] transition"
-            ><i class="fab fa-instagram"></i
-          ></a>
+
+    <!-- Newsletter améliorée -->
+    <section class="py-16 bg-[#4fc5a3]">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-white rounded-2xl p-8 shadow-xl">
+          <div class="md:flex items-center justify-between">
+            <div class="md:w-1/2 mb-6 md:mb-0">
+              <h3 class="text-2xl font-bold text-[#21064d] mb-2">
+                Restez informés
+              </h3>
+              <p class="text-gray-600">
+                Abonnez-vous à notre newsletter pour recevoir nos actualités et prochains événements.
+              </p>
+            </div>
+
+            <div class="md:w-1/2">
+              <form class="flex flex-col sm:flex-row gap-2">
+                <input type="email" placeholder="Votre email"
+                  class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#21064d] focus:border-transparent"
+                  required>
+                <button type="submit"
+                  class="bg-[#21064d] hover:bg-[#3a0b8a] text-white font-semibold px-6 py-3 rounded-lg btn-primary whitespace-nowrap">
+                  S'abonner
+                </button>
+              </form>
+              <p class="text-xs text-gray-500 mt-2">
+                Nous respectons votre vie privée. Vos informations sont sécurisées.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
-  </body>
+    </section>
+  </main>
+
+  <!-- Footer amélioré -->
+  <footer class="bg-[#21064d] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Logo et description -->
+        <div>
+          <div class="flex items-center mb-4">
+            <img src="./img/logo.jpg" alt="Logo Educ-Universel" class="w-12 h-12 rounded-full mr-3">
+            <h3 class="text-xl font-bold bg-gradient-to-r from-[#4fc5a3] to-[#add670] bg-clip-text text-transparent">
+              Educ-Universel
+            </h3>
+          </div>
+          <p class="text-gray-300 mb-4">
+            Organisation Non Gouvernementale dédiée à l'éducation, la formation et le développement durable au Bénin et
+            en Afrique.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-300 hover:text-[#4fc5a3] transition" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-300 hover:text-[#4fc5a3] transition" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-300 hover:text-[#4fc5a3] transition" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-300 hover:text-[#4fc5a3] transition" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Liens rapides -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-[#add670]">Liens rapides</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="index.html" class="text-gray-300 hover:text-[#4fc5a3] transition">
+                Accueil
+              </a>
+            </li>
+            <li>
+              <a href="./pages/about/about.html" class="text-gray-300 hover:text-[#4fc5a3] transition">
+                À propos
+              </a>
+            </li>
+            <li>
+              <a href="./pages/gallerie/gallerie.html" class="text-gray-300 hover:text-[#4fc5a3] transition">
+                Gallerie
+              </a>
+            </li>
+            <li>
+              <a href="./pages/formation/formation.html" class="text-gray-300 hover:text-[#4fc5a3] transition">
+                Activités
+              </a>
+            </li>
+            <li>
+              <a href="./pages/contact/contact.html" class="text-gray-300 hover:text-[#4fc5a3] transition">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-[#add670]">Contactez-nous</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3 text-[#4fc5a3]"></i>
+              <span class="text-gray-300">123 Rue de l'Éducation, Cotonou, Bénin</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone-alt mt-1 mr-3 text-[#4fc5a3]"></i>
+              <span class="text-gray-300">+229 12 34 56 78</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-3 text-[#4fc5a3]"></i>
+              <span class="text-gray-300">contact@educ-universel.org</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter footer -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-[#add670]">Newsletter</h4>
+          <p class="text-gray-300 mb-4">
+            Abonnez-vous pour recevoir nos dernières actualités directement dans votre boîte email.
+          </p>
+          <form class="flex flex-col">
+            <input type="email" placeholder="Votre email"
+              class="px-4 py-2 rounded-lg border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#4fc5a3] mb-2"
+              required>
+            <button type="submit"
+              class="bg-[#4fc5a3] hover:bg-[#3ea88c] text-[#21064d] font-medium py-2 rounded-lg transition">
+              S'abonner
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-gray-700 text-center">
+        <p class="text-gray-300">
+          &copy; 2025 Educ-Universel. Tous droits réservés.
+        </p>
+        <div class="mt-2 text-sm text-gray-400">
+          <a href="#" class="hover:text-[#4fc5a3] transition">Politique de confidentialité</a> |
+          <a href="#" class="hover:text-[#4fc5a3] transition">Conditions d'utilisation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton retour en haut -->
+  <a href="#" id="back-to-top"
+    class="fixed bottom-8 right-8 bg-[#21064d] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible hover:bg-[#3a0b8a]"
+    aria-label="Retour en haut">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    // Animation du bouton retour en haut
+    window.addEventListener('scroll', function () {
+      const backToTopButton = document.getElementById('back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.remove('opacity-100', 'visible');
+        backToTopButton.classList.add('opacity-0', 'invisible');
+      }
+    });
+
+    // Animation des éléments au scroll
+    const animateOnScroll = function () {
+      const elements = document.querySelectorAll('.slide-up');
+
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+
+        if (elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    // Initialisation
+    window.addEventListener('load', function () {
+      // Définir le délai d'animation pour chaque élément
+      const slideUpElements = document.querySelectorAll('.slide-up');
+      slideUpElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s ease-out';
+        el.style.transitionDelay = `${index * 0.1}s`;
+      });
+
+      // Lancer l'animation au scroll
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll(); // Pour les éléments déjà visibles au chargement
+    });
+  </script>
+</body>
+
 </html>

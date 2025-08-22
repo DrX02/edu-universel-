@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ONG - Page d'accueil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .hero {
+        background-image: url("./img/h.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /* background-color: #21064d; */
+
+        background-size: cover;
+        background-position: center;
+      }
+      .carousel-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.37);
+        z-index: 1;
+      }
+      /* .carousel-item {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    } */
+    </style>
+  </head>
+  <body class="font-sans antialiased bg-[#fefefe] text-[#21064d]">
+    <!-- Header avec menu mobile -->
+    <header class="bg-[#21064d] text-white p-4 sticky z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl font-bold">Educ-universel</h1>
+        <div class="md:hidden" x-data="{ open: false }">
+          <button type="button" title="menu" @click="open = !open">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+          <div
+            x-show="open"
+            class="absolute left-0 right-0 bg-[#21064d] mt-2 space-y-2 text-center py-4 z-10"
+          >
+            <a href="index.html" class="block text-white hover:text-[#4fc5a3]"
+              >Accueil</a
+            >
+            <a
+              href="./pages/about/about.html"
+              class="block text-white hover:text-[#4fc5a3]"
+              >À propos</a
+            >
+            <!-- <a
+              href="./pages/about/about.html#missions"
+              class="block text-white hover:text-[#4fc5a3]"
+              >Mission</a
+            > -->
+
+            <a
+              href="./pages/gallerie/gallerie.html"
+              class="block text-white hover:text-[#4fc5a3]"
+              >Gallerie</a
+            >
+            <a
+              href="./pages/formation/formation.html"
+              class="block text-white hover:text-[#4fc5a3]"
+              >Activités</a
+            >
+            <a
+              href="./pages/contact/contact.html"
+              class="block text-white hover:text-[#4fc5a3]"
+              >Contact</a
+            >
+          </div>
+        </div>
+        <nav class="space-x-4 hidden md:block">
+          <a href="index.html" class="hover:text-[#4fc5a3]">Accueil</a>
+          <a href="./pages/about/about.html" class="hover:text-[#4fc5a3]"
+            >À propos</a
+          >
+          <!-- <a href="./pages/about/about.html#missions" class="hover:text-[#4fc5a3]"
+            >Missions</a
+          > -->
+          
+          <a href="./pages/gallerie/gallerie.html" class="hover:text-[#4fc5a3]"
+            >Gallerie</a
+          >
+          <a href="./pages/formation/formation.html" class="hover:text-[#4fc5a3]"
+            >Activités</a
+          >
+          <a href="./pages/contact/contact.html" class="hover:text-[#4fc5a3]">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class=" ">
+      <!-- Hero -->
+      <!-- <section class="bg-[#4fc5a3] text-white py-20 text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold mb-4">Agir ensemble pour un avenir meilleur</h2>
+      <p class="text-lg mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button class="bg-[#21064d] hover:bg-[#add670] text-white px-6 py-3 rounded">Faire un don</button>
+    </div>
+  </section> -->
+
+      <!-- Hero -->
+      <div class="carousel-overlay h-[75vh]"></div>
+      <section
+        class="text-white py-20 text-center h-[68vh]"
+        style="
+          background-image: url('./img/hh.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div
+          class="container mx-auto h-[70vh] flex flex-col justify-center items-center"
+        >
+          <h2 class="text-4xl md:text-6xl font-bold mb-4 z-10">
+            Agir ensemble pour un avenir meilleur
+          </h2>
+          <p class="text-xl mb-6 z-10">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <button
+            type="button"
+            class="bg-[#21064d] hover:bg-[#add670] text-white px-6 py-3 rounded z-10"
+          >
+            Faire un don
+          </button>
+        </div>
+      </section>
+
+      <!-- À propos -->
+      <section id="about" class="py-16 px-4 max-w-7xl mx-auto">
+        <div
+          class="container mx-auto flex flex-col md:flex-row items-center gap-10"
+        >
+          <img
+            src="./img/logo.jpg"
+            alt="ONG"
+            class="rounded shadow-lg w-96 h-96"
+          />
+          <div>
+            <h3 class="text-3xl font-semibold mb-4">PRESENTATION DE L’ONG</h3>
+            <p class="text-gray-700">
+              L’avenir n’est pas aléatoire, Il s’anticipe, se prépare et se
+              construit dès aujourd’hui. Désireux d’encourager une action
+              philanthropique tourner résolument vers l’avenir, Educ Universel
+              est une Organisation Non Gouvernementale (ONG) crée dans le but de
+              défendre le droit de l’homme à l’éducation et à la participation
+              culturelle. En Afrique et en particulier au Benin, des milliers de
+              jeunes courent le risque de rater des opportunités et de percevoir
+              de bas salaire plutard dans la vie parce que l’école ne parvient
+              pas à leur donner l’éducation dont ils ont besoin pour réussir.
+              Mettant en garde contre la crise de l’apprentissage dans
+              l’éducation nationale, la banque mondiale soutient que sans
+              apprentissage, la scolarisation n’est pas seulement une occasion
+              manquée, elle est également une grosse injustice pour les enfants
+              du monde entier. Educ universel soutient la mise en œuvre et
+              l’encrage de l’Education au Développement Durable(EDD) au niveau
+              de l’école primaire et secondaire et même universitaire. Educ
+              Universel contribue à rendre tous les individus, qu’ils aient des
+              handicaps, qu’ils soient des personnes âgées ou qu’ils se situent
+              dans la moyenne à une vie autonome et auto-responsable dans un
+              monde de plus en plus complexe.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- domaines d'intervention -->
+      <section class="py-24 bg-gray-50">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <!-- Titre et introduction -->
+          <div class="mb-10 lg:mb-16 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+              Nos domaines d'intervention
+            </h2>
+            <p class="text-lg text-gray-600">
+              L'ONG Educ Universel s’engage à œuvrer dans plusieurs secteurs
+              clés pour un développement durable et inclusif.
+            </p>
+          </div>
+
+          <!-- Grille des domaines -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Education -->
+            <div
+              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-indigo-100"
+            >
+              <div class="flex justify-center mb-4">
+                <div class="bg-blue-200 p-4 rounded-full">
+                  <i class="fas fa-book-reader fa-3x text-blue-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
+                Éducation
+              </h3>
+              <p class="text-gray-600 text-center text-sm">
+                Promouvoir l'accès à une éducation de qualité et équitable pour
+                tous, afin de favoriser le développement des compétences et des
+                connaissances.
+              </p>
+            </div>
+
+            <!-- Environnement -->
+            <div
+              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-green-100"
+            >
+              <div class="flex justify-center mb-4">
+                <div class="bg-green-200 p-4 rounded-full">
+                  <i class="fas fa-leaf fa-3x text-green-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
+                Environnement
+              </h3>
+              <p class="text-gray-600 text-center text-sm">
+                Sensibiliser et agir pour la protection de l’environnement afin
+                de préserver notre planète pour les générations futures.
+              </p>
+            </div>
+
+            <!-- Agriculture -->
+            <div
+              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-yellow-100"
+            >
+              <div class="flex justify-center mb-4">
+                <div class="bg-yellow-200 p-4 rounded-full">
+                  <i class="fas fa-seedling fa-3x text-yellow-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
+                Agriculture
+              </h3>
+              <p class="text-gray-600 text-center text-sm">
+                Soutenir le développement agricole durable pour améliorer la
+                sécurité alimentaire et les moyens de subsistance.
+              </p>
+            </div>
+
+            <!-- Métiers de l'artisanat -->
+            <div
+              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-orange-100"
+            >
+              <div class="flex justify-center mb-4">
+                <div class="bg-orange-200 p-4 rounded-full">
+                  <i class="fas fa-tools fa-3x text-orange-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
+                Métiers de l'artisanat
+              </h3>
+              <p class="text-gray-600 text-center text-sm">
+                Encourager le développement des compétences artisanales pour
+                favoriser l'insertion socio-économique et la valorisation des
+                savoir-faire locaux.
+              </p>
+            </div>
+
+            <!-- Education artistique, culturel et sportif -->
+            <div
+              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-purple-100"
+            >
+              <div class="flex justify-center mb-4">
+                <div class="bg-purple-200 p-4 rounded-full">
+                  <i class="fas fa-music fa-3x text-purple-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
+                Education Artistique, Culturelle & Sportive
+              </h3>
+              <p class="text-gray-600 text-center text-sm">
+                Favoriser la créativité, la culture et la pratique sportive pour
+                le développement global des jeunes et la cohésion sociale.
+              </p>
+            </div>
+
+            <!-- Formation -->
+            <div
+              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-red-100"
+            >
+              <div class="flex justify-center mb-4">
+                <div class="bg-red-200 p-4 rounded-full">
+                  <i class="fas fa-graduation-cap fa-3x text-red-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
+                Formation
+              </h3>
+              <p class="text-gray-600 text-center text-sm">
+                Renforcer les capacités et compétences à travers la formation
+                continue pour soutenir l’émancipation et la croissance
+                personnelle.
+              </p>
+            </div>
+
+            <!-- Partenariats et Coopération -->
+            <div
+              class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-500 hover:bg-indigo-100"
+            >
+              <div class="flex justify-center mb-4">
+                <div class="bg-indigo-200 p-4 rounded-full">
+                  <i class="fas fa-handshake fa-3x text-indigo-600"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">
+                Partenariats & Coopération
+              </h3>
+              <p class="text-gray-600 text-center text-sm">
+                Établir des collaborations stratégiques avec des acteurs locaux,
+                nationaux et internationaux pour renforcer notre action commune.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nos Actions -->
+      <section 
+        class="bg-[#add670] py-16 px-4 h-96"
+        style="
+          background-image: url('./img/h.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="container mx-auto text-center text-[#21064d]">
+          <!-- <h3 class="text-3xl font-bold mb-10">Nos actions</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded shadow">
+            <img
+              src="https://via.placeholder.com/300x200"
+              alt="Action"
+              class="mb-4 rounded"
+            />
+            <h4 class="text-xl font-semibold mb-2">Éducation</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur.</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow">
+            <img
+              src="https://via.placeholder.com/300x200"
+              alt="Action"
+              class="mb-4 rounded"
+            />
+            <h4 class="text-xl font-semibold mb-2">Santé</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur.</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow">
+            <img
+              src="https://via.placeholder.com/300x200"
+              alt="Action"
+              class="mb-4 rounded"
+            />
+            <h4 class="text-xl font-semibold mb-2">Environnement</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur.</p>
+          </div>
+        </div> -->
+        </div>
+      </section>
+
+      <section id="actions" class="bg-gray-50 py-16 px-4 max-w-7xl mx-auto">
+        <div class="container mx-auto text-center text-[#21064d]">
+          <h3 class="text-3xl font-bold mb-10">Nos actions</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded shadow">
+              <img src="./img/atr/3.jpg" alt="Action" class="mb-4 rounded" />
+              <h4 class="text-xl font-semibold mb-2">Titre</h4>
+              <p>Description</p>
+            </div>
+            <div class="bg-white p-6 rounded shadow">
+              <img src="./img/atr/5.jpg" alt="Action" class="mb-4 rounded" />
+              <h4 class="text-xl font-semibold mb-2">Titre</h4>
+              <p>Description</p>
+            </div>
+            <div class="bg-white p-6 rounded shadow">
+              <img src="./img/atr/6.jpg" alt="Action" class="mb-4 rounded" />
+
+              <h4 class="text-xl font-semibold mb-2">Titre</h4>
+              <p>Description</p>
+            </div>
+            <div class="bg-white p-6 rounded shadow">
+              <img src="./img/atr/11.jpg" alt="Action" class="mb-4 rounded" />
+
+              <h4 class="text-xl font-semibold mb-2">Titre</h4>
+              <p>Description</p>
+            </div>
+            <div class="bg-white p-6 rounded shadow">
+              <img src="./img/atr/8.jpg" alt="Action" class="mb-4 rounded" />
+
+              <h4 class="text-xl font-semibold mb-2">Titre</h4>
+              <p>Description</p>
+            </div>
+            <div class="bg-white p-6 rounded shadow">
+              <img src="./img/atr/4.jpg" alt="Action" class="mb-4 rounded" />
+
+              <h4 class="text-xl font-semibold mb-2">Titre</h4>
+              <p>Description</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activités -->
+      <section class="bg-white ">
+        <div
+          class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
+        >
+          <img
+            class="w-full "
+            src="./img/agr/2.jpg"
+            alt="dashboard image"
+          />
+          <!-- <img class="w-full hidden " src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image"> -->
+          <div class="mt-4 md:mt-0">
+            <h2
+              class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 "
+            >
+              Créons ensemble un environnement avenir meilleur
+            </h2>
+            <p
+              class="mb-6 font-light text-gray-500 md:text-lg "
+            >
+              Nous croyons que chaque individu a le potentiel de contribuer à un
+              avenir meilleur. C'est pourquoi nous nous engageons à créer des
+              outils et des idées qui favorisent la collaboration et l'entraide
+              au sein de nos communautés.
+            </p>
+            <a
+              href="#"
+              class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+            >
+              Get started
+              <svg
+                class="ml-2 -mr-1 w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activités -->
+      <section class="bg-white  max-w-7xl mx-auto">
+        <div
+          class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
+        >
+          <div class="mt-4 md:mt-0">
+            <h2
+              class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 "
+            >
+            Connectons-nous pour un avenir meilleur
+            </h2>
+            <p
+              class="mb-6 font-light text-gray-500 md:text-lg "
+            >
+              Nous croyons que chaque individu a le potentiel de contribuer à un
+              avenir meilleur. C'est pourquoi nous nous engageons à créer des
+              outils et des idées qui favorisent la collaboration et l'entraide
+              au sein de nos communautés.
+            </p>
+            <a
+              href="#"
+              class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+            >
+              Get started
+              <svg
+                class="ml-2 -mr-1 w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <img
+            class="w-full "
+            src="./img/ctr/1.jpg"
+            alt="dashboard image"
+          />
+          <!-- <img class="w-full hidden " src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image"> -->
+        </div>
+      </section>
+
+      <!-- Projets -->
+      <!-- <section class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="container mx-auto text-center">
+          <h3 class="text-3xl font-bold mb-10">Nos projets</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-[#4fc5a3] text-white p-6 rounded shadow-lg">
+              <h4 class="text-xl font-semibold mb-2">Projet Alpha</h4>
+              
+              <p>Description</p>
+            </div>
+            <div class="bg-[#21064d] text-white p-6 rounded shadow-lg">
+              <h4 class="text-xl font-semibold mb-2">Projet Beta</h4>
+              
+              <p>Description</p>
+            </div>
+            <div class="bg-[#add670] text-[#21064d] p-6 rounded shadow-lg">
+              <h4 class="text-xl font-semibold mb-2">Projet Gamma</h4>
+              
+              <p>Description</p>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- Événements -->
+      <!-- component -->
+      <section
+        class="text-gray-600 body-font overflow-hidden max-w-7xl mx-auto"
+      >
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+            >
+              Nos événements récents
+            </h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Découvrez les moments forts de nos dernières activités et
+              initiatives. Chaque événement est une occasion de rassembler la
+              communauté et de promouvoir nos valeurs.
+            </p>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="./img/agr/3.jpg"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
+                  >
+                    THE SUBTITLE
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                    Shooting Stars
+                  </h1>
+                  <p class="leading-relaxed">
+                    Photo booth fam kinfolk cold-pressed sriracha leggings
+                    jianbing microdosing tousled waistcoat.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="./img/agr/12.jpg"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
+                  >
+                    THE SUBTITLE
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                    The Catalyzer
+                  </h1>
+                  <p class="leading-relaxed">
+                    Photo booth fam kinfolk cold-pressed sriracha leggings
+                    jianbing microdosing tousled waistcoat.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="./img/agr/7.jpg"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
+                  >
+                    THE SUBTITLE
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                    The 400 Blows
+                  </h1>
+                  <p class="leading-relaxed">
+                    Photo booth fam kinfolk cold-pressed sriracha leggings
+                    jianbing microdosing tousled waistcoat.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="./img/ctr/1.jpg"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
+                  >
+                    THE SUBTITLE
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                    Neptune
+                  </h1>
+                  <p class="leading-relaxed">
+                    Photo booth fam kinfolk cold-pressed sriracha leggings
+                    jianbing microdosing tousled waistcoat.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="./img/ctr/3.jpg"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
+                  >
+                    THE SUBTITLE
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                    Holden Caulfield
+                  </h1>
+                  <p class="leading-relaxed">
+                    Photo booth fam kinfolk cold-pressed sriracha leggings
+                    jianbing microdosing tousled waistcoat.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="./img/ctr/2.jpg"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
+                  >
+                    THE SUBTITLE
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                    Alper Kamu
+                  </h1>
+                  <p class="leading-relaxed">
+                    Photo booth fam kinfolk cold-pressed sriracha leggings
+                    jianbing microdosing tousled waistcoat.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- component -->
+      <!-- <div class="relative w-full h-[80vh] bg-slate-800">
+  <input
+    aria-label="projet 1"
+    class="hidden peer/slider1 checkbox"
+    type="radio"
+    name="slider"
+    id="slider1"
+    checked
+  />
+  <input
+    aria-label="projet 2"
+    class="hidden peer/slider2 checkbox"
+    type="radio"
+    name="slider"
+    id="slider2"
+  />
+  <input
+  aria-label="projet 3"
+    class="hidden peer/slider3 checkbox"
+    type="radio"
+    name="slider"
+    id="slider3"
+  />
+
+  <div
+    class="relative w-[300vw] h-[100%] flex transition-all duration-500 ease-in-out peer-checked/slider1:-left-0 peer-checked/slider2:-left-[100vw] peer-checked/slider3:-left-[200vw]"
+  >
+    <div class="relative w-full h-full flex bg-red-500">
+
+    </div>
+    <div class="relative w-full h-full flex bg-amber-500"></div>
+    <div class="relative w-full h-full flex bg-emerald-500"></div>
+  </div>
+
+  <div
+    class="absolute w-full flex justify-center gap-2 bottom-12 peer-[&_label:nth-of-type(1)]/slider1:peer-checked/slider1:opacity-100 peer-[&_label:nth-of-type(1)]/slider1:peer-checked/slider1:w-10 peer-[&_label:nth-of-type(2)]/slider2:peer-checked/slider2:opacity-100 peer-[&_label:nth-of-type(2)]/slider2:peer-checked/slider2:w-10 peer-[&_label:nth-of-type(3)]/slider3:peer-checked/slider3:opacity-100 peer-[&_label:nth-of-type(3)]/slider3:peer-checked/slider3:w-10"
+  >
+    <label
+      class="block w-5 h-5 bg-white cursor-pointer opacity-50 z-10 transition-all duration-300 ease-in-out hover:scale-125 hover:opacity-100"
+      for="slider1"
+    >
+    </label>
+    <label
+      class="block w-5 h-5 bg-white cursor-pointer opacity-50 z-10 transition-all duration-300 ease-in-out hover:scale-125 hover:opacity-100"
+      for="slider2"
+    >
+    </label>
+    <label
+      class="block w-5 h-5 bg-white cursor-pointer opacity-50 z-10 transition-all duration-300 ease-in-out hover:scale-125 hover:opacity-100"
+      for="slider3"
+    >
+    </label>
+  </div>
+</div> -->
+
+      <!-- Témoignages -->
+
+      <!-- Partenaires -->
+      <!-- <section class="py-16 px-4">
+        <div class="container mx-auto text-center">
+          <h3 class="text-3xl font-bold mb-10">Nos partenaires</h3>
+          <div class="flex flex-wrap justify-center items-center gap-10">
+            <img
+              src="https://via.placeholder.com/100x50"
+              alt="Logo Partenaire"
+            />
+            <img
+              src="https://via.placeholder.com/100x50"
+              alt="Logo Partenaire"
+            />
+            <img
+              src="https://via.placeholder.com/100x50"
+              alt="Logo Partenaire"
+            />
+          </div>
+        </div>
+      </section> -->
+
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-[#21064d] text-white">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Rejoignez-nous dans notre mission</h2>
+          <p class="text-lg mb-8">Ensemble, nous pouvons faire la différence. Participez à nos activités ou soutenez-nous par un don.</p>
+          <a href="./pages/contact/contact.html" class="bg-[#4fc5a3] hover:bg-[#3ea88c] text-white font-semibold py-3 px-6 rounded-lg transition duration-300">Contactez-nous</a>
+      </div>
+  </section>
+
+  <section class="py-20 bg-[#4fc5a3]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="bg-[#21064d] rounded-2xl p-8 xl:p-11 shadow-xl">
+          <h2 class="font-manrope text-4xl text-white text-center font-bold mb-4">
+            Agissons ensemble pour un avenir meilleur
+          </h2>
+          <p class="text-[#add670] text-center mb-10 max-w-2xl mx-auto text-lg">
+            Rejoignez notre mission pour autonomiser les communautés grâce à l'éducation, la formation et la solidarité. Chaque action compte.
+          </p>
+    
+          <div class="flex flex-col sm:flex-row justify-center gap-6 mt-6">
+            <a href="./pages/contact/contact.html" class="inline-block bg-[#4fc5a3] hover:bg-[#3cb18d] text-[#21064d] font-semibold px-8 py-3 rounded-full transition">
+              Faire un don
+            </a>
+            <a href="./pages/contact/contact.html" class="inline-block bg-transparent border-2 border-[#add670] text-[#add670] hover:bg-[#add670] hover:text-[#21064d] font-semibold px-8 py-3 rounded-full transition">
+              Nous rejoindre
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-[#21064d] text-white py-8">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <p>&copy; 2025 Educ-Universel. Tous droits réservés.</p>
+        <div class="mt-4 flex justify-center gap-6">
+          <a title="link" href="#" class="hover:text-[#4fc5a3] transition"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="#" title="link" class="hover:text-[#4fc5a3] transition"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="#" title="link" class="hover:text-[#4fc5a3] transition"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
